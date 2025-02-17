@@ -83,3 +83,44 @@ resource "kubernetes_namespace" "custom_namespace" {
     }
   }
 }
+
+# MongoDB Helm Release
+resource "helm_release" "mongodb" {
+  name             = "mongodb"
+  repository       = "https://charts.bitnami.com/bitnami"
+  chart            = "mongodb"
+  namespace        = kubernetes_namespace.custom_namespace.metadata[0].name
+  version          = var.mongodb_chart_version
+  create_namespace = false
+
+  values = [
+    <<-EOT
+    architecture: standalone
+    auth:
+      enabled: true
+      rootPassword: "${var.mongodb_root_password}"
+      username: "${var.mongodb_username}"
+      password: "${var.mongodb_password}"
+      database: "${var.mongodb_database}"
+    
+    persistence:
+      enabled: true
+      size: ${var.mongodb_storage_size}
+    
+    resources:
+      requests:
+        memory: "${var.mongodb_memory_request}"
+        cpu: "${var.mongodb_cpu_request}"
+      limits:
+        memory: "${var.mongodb_memory_limit}"
+        cpu: "${var.mongodb_cpu_limit}"
+    
+    metrics:
+      enabled: true
+    
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    EOT
+  ]
+}

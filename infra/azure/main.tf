@@ -33,4 +33,13 @@ module "kubernetes_resources" {
   nginx_replicas  = var.nginx_replicas
   namespace_name  = var.namespace_name
   environment     = var.environment
+  mongodb_username = var.mongodb_username
+  mongodb_password = var.mongodb_password
+  mongodb_root_password = var.mongodb_root_password  # Change this
+  mongodb_database = var.mongodb_database
+  mongodb_storage_size = var.mongodb_storage_size  # Adjust based on your needs
+  mongodb_memory_request = var.mongodb_memory_request
+  mongodb_cpu_request = var.mongodb_cpu_request
+  mongodb_memory_limit = var.mongodb_memory_limit
+  mongodb_cpu_limit = var.mongodb_cpu_limit
 }
