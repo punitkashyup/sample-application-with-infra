@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: todo-backend
+  name: todo-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-backend
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: todo-backend
+    spec:
+      containers:
+      - image: punitkashyup/task-manager-be:_BUILD__ID_
+        name: todo-backend
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+        - containerPort: 4000
+        env:
+        - name: PORT
+          valueFrom:
+            secretKeyRef:
+              name: todo-backend-secret
+              key: PORT
+        - name: dbName
+          valueFrom:
+            secretKeyRef:
+              name: todo-backend-secret
+              key: dbName
+        - name: dbUrl
+          valueFrom:
+            secretKeyRef:
+              name: todo-backend-secret
+              key: dbUrl
+        - name: SALT_ROUNDS
+          valueFrom:
+            secretKeyRef:
+              name: todo-backend-secret
+              key: SALT_ROUNDS
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: todo-backend-secret
+              key: JWT_SECRET
+        - name: JWT_EXPIRE
+          valueFrom:
+            secretKeyRef:
+              name: todo-backend-secret
+              key: JWT_EXPIRE
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-backend
+  labels:
+    run: todo-backend
+spec:
+  type: ClusterIP
+  selector:
+    app: todo-backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 4000
