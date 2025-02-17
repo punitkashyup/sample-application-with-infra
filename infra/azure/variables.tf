@@ -90,3 +90,14 @@ variable "tags" {
   description = "Tags to be applied to resources"
   default     = {}
 }
+
+variable "acme_email" {
+  type        = string
+  description = "Email address for Let's Encrypt notifications"
+}
+
+variable "nginx_replicas" {
+  type        = number
+  description = "Number of NGINX ingress controller replicas"
+  default     = 2
+}
