@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: richardrigutins/replace-in-files@v1
         with:
-          files: "./backend/deployment.yml"
+          files: "./backend/deployment/deployment.yml"
           search-text: "_BUILD__ID_"
           replacement-text: "${{ github.run_number }}"
 
