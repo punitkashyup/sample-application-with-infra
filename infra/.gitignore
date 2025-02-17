@@ -1,0 +1,36 @@
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.backup
+
+# Terraform crash log
+crash.log
+
+# Terraform provider cache
+.terraform/
+.terraform.lock.hcl
+
+# Terraform execution plan files
+*.tfplan
+
+# Sensitive variable files (customize as needed)
+*.auto.tfvars
+*.auto.tfvars.json
+*.tfvars
+*.tfvars.json
+
+# Ignore local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore Terraform logs and temp files
+.terraformrc
+terraform.rc
+terraform.debug
+terraform.log
+
+# Ignore Terraform state lock file
+.terraform.tfstate.lock.info
