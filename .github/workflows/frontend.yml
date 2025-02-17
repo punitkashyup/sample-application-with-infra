@@ -18,11 +18,9 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - run: |          
-          docker build -f ./frontend/Dockerfile \
-          --build-arg VITE_API_URL=${{ vars.VITE_API_URL }} \
-          -t punitkashyup/task-manager-fe:${{ github.run_number }} .
-
+      - run: |    
+          cd frontend      
+          docker build --build-arg VITE_API_URL=${{ vars.VITE_API_URL }} -t punitkashyup/task-manager-fe:${{ github.run_number }} .
           docker push punitkashyup/task-manager-fe:${{ github.run_number }}
   deploy:
     needs: build

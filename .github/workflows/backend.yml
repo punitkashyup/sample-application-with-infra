@@ -19,7 +19,8 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - run: |
-          docker build -f ./backend/Dockerfile -t punitkashyup/task-manager-be:${{ github.run_number }} .
+          cd backend
+          docker build -t punitkashyup/task-manager-be:${{ github.run_number }} .
           docker push punitkashyup/task-manager-be:${{ github.run_number }}
   deploy:
     needs: build
