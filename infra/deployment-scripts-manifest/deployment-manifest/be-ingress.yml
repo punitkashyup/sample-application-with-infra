@@ -16,8 +16,8 @@ spec:
     - host: todo-api.tdwebsites.in
       http:
         paths:
-          - path: /(.*)
-            pathType: Prefix
+          - path: "/(.*)"
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: todo-backend
