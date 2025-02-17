@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-cd terraform
+cd ../azure
 terraform destroy -auto-approve
