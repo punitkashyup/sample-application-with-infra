@@ -32,6 +32,10 @@ flowchart TB
                 subgraph NS["Custom Namespace"]
                     MODB["MongoDB"]
                 end
+                
+                subgraph TODO["TODO Namespace"]
+                    TASKS["Task Manager"]
+                end
             end
         end
         
