@@ -12,12 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Docker Login
-        uses: docker/login-action@v3.3.0
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
         with:
-            registry: punitkashyup
-            username: ${{ secrets.REGISTRY_USERNAME }}
-            password: ${{ secrets.REGISTRY_PASSWORD }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - run: |          
           docker build -f ./frontend/Dockerfile \
