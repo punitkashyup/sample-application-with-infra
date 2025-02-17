@@ -44,4 +44,4 @@ jobs:
           action: deploy
           namespace: "todo"
           manifests: |
-            ./backend/deployment/deployment.yml
+            ./fronted/deployment/deployment.yml
