@@ -31,4 +31,6 @@ module "kubernetes_resources" {
   kube_config     = module.aks.kube_config
   acme_email      = var.acme_email
   nginx_replicas  = var.nginx_replicas
+  namespace_name  = var.namespace_name
+  environment     = var.environment
 }

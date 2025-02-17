@@ -72,3 +72,14 @@ YAML
 
   depends_on = [helm_release.cert_manager]
 }
+
+# Create custom namespace
+resource "kubernetes_namespace" "custom_namespace" {
+  metadata {
+    name = var.namespace_name
+    labels = {
+      environment = var.environment
+      managed-by  = "terraform"
+    }
+  }
+}

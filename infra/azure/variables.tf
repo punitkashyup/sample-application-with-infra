@@ -101,3 +101,11 @@ variable "nginx_replicas" {
   description = "Number of NGINX ingress controller replicas"
   default     = 2
 }
+
+variable "namespace_name" {
+  type        = string
+}
+
+variable "environment" {
+  type        = string
+}

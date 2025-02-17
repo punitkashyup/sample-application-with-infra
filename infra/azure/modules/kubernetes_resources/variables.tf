@@ -26,3 +26,15 @@ variable "acme_email" {
   type        = string
   description = "Email address for Let's Encrypt notifications"
 }
+
+# New variables for namespace
+variable "namespace_name" {
+  type        = string
+  description = "Name of the custom namespace to create"
+}
+
+variable "environment" {
+  type        = string
+  description = "Environment label for the namespace (e.g., dev, staging, prod)"
+  default     = "dev"
+}
